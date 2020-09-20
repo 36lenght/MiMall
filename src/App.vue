@@ -7,11 +7,24 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import jsonp from "jsonp";
 
 export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  data(){
+    return {
+      data:''
+    }
+  },
+  mounted(){
+    let url = "/api/activity/servicetime";
+    jsonp(url,(err,res)=>{
+      let result = res;
+      this.data = result;
+    })
   }
 }
 </script>
