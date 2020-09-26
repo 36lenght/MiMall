@@ -13,15 +13,16 @@ export default{
             window.sessionStorage.setItem(STORAGE_KEY,JSON.stringify(val));
         }
     },
-    // 获取某一个模块下面的属性user下面的userName
+    // 获取某一个模块下面的属性，比如：user下面的userName
     getItem(key,module_name){
         if (module_name){
             let val = this.getItem(module_name);
             if (val) return val([key]);
         }
-        this.getStorage()[key];
+        return this.getStorage()[key];
     },
     getStorage(){
+        // 获取storage下的所有信息
         return JSON.parse(window.sessionStorage.getItem(STORAGE_KEY) || '{}')
     },
     clear(key,module_name){
